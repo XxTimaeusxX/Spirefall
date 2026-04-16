@@ -33,6 +33,26 @@ public class LevelGenerator : MonoBehaviour
         BuildVisualGrid();
     }
 
+    // Add this new method to randomize the level
+    public void RandomizeLevel()
+    {
+        // 1. Pick a random number of sides (e.g., Triangle up to an Octagon)
+        // Be careful not to make it too high or the lanes get too small
+        polygonSides = Random.Range(3, 15); 
+
+        // 2. You can also randomize the radius or tunnel length if you want!
+        // radius = Random.Range(4f, 8f);
+        
+        // 3. Randomize rotation offset just to change the orientation
+        angleOffset = Random.Range(0f, 360f);
+
+        // 4. Recalculate everything and rebuild the visual lines
+        GeneratePolygonPoints();
+        BuildVisualGrid();
+        
+        Debug.Log($"Level Randomized! New sides: {polygonSides}");
+    }
+
     public void GeneratePolygonPoints()
     {
         if (polygonSides < 3) polygonSides = 3;

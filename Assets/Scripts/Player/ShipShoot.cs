@@ -26,6 +26,6 @@ public class ShipShoot : MonoBehaviour
     public void Shoot()
     {
         AudioManager.PlayPlayerShoot();
-        Instantiate(projectileprefab, projectileposition.position, projectileposition.rotation);
+        ProjectilePool.Instance.GetProjectile(projectileposition.position, projectileposition.rotation);
     }
 }
