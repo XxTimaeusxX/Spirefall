@@ -12,7 +12,8 @@ public class MenuManager : MonoBehaviour
 
     private bool isGameOver = false;
     private bool isPaused = false;
-
+    [Header("Objects")]
+    public ParticleSystem[] particles;
     private void Start()
     {
         AudioManager.PlayMainBGM();
@@ -61,6 +62,17 @@ public class MenuManager : MonoBehaviour
 
         if (GameOverMenu != null) GameOverMenu.SetActive(true);
 
+        if (particles != null)
+        {
+            foreach (ParticleSystem ps in particles)
+            {
+                if (ps != null)
+                {
+                    var main = ps.main;
+                    main.useUnscaledTime = true;
+                }
+            }
+        }
         FreezeGameLocally();
     }
 
