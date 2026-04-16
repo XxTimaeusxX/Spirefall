@@ -167,6 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea18016dd26c6f348ae83a4d126c07c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageHandler
-  damageAmount: 1
+  damageAmount: 10
   targetTag: Enemy
   DestroyOnHit: 1

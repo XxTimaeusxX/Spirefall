@@ -10,6 +10,7 @@ public class DamageHandler : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
+           
             // Try to find the Health component on the object we collided with
             Health targetHealth = other.GetComponent<Health>();
             if (targetHealth != null)
@@ -21,6 +22,7 @@ public class DamageHandler : MonoBehaviour
           
             if (DestroyOnHit)
             {
+                Debug.Log($"DESTROYED");
                 Destroy(gameObject);
             }
         }

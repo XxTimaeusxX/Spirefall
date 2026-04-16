@@ -21,13 +21,4 @@ public class Projectile : MonoBehaviour
         {
         rb.linearVelocity = transform.forward * speed;
     }
-  /*  private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            
-            Destroy(gameObject); // Example: destroy enemy on collision
-            Destroy(other.gameObject); // Example: destroy enemy on collision
-        }
-    }*/
 }
