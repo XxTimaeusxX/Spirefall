@@ -7,6 +7,9 @@ public class ShipShoot : MonoBehaviour
     private PlayerInput playerInput;
     public InputAction shootAction;
     public Transform projectileposition;
+    [Header("Shoot settings")]
+    public float firerate = 0.2f; // Time in seconds between shots
+    private float nextFireTime = 0f; // Time when the player can shoot again
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +21,10 @@ public class ShipShoot : MonoBehaviour
     void Update()
     {
         // Check if the input action was pressed during this frame
-        if (shootAction != null && shootAction.WasPressedThisFrame())
+        if (shootAction != null && shootAction.IsPressed() && Time.time >= nextFireTime)
         {
             Shoot();
+            nextFireTime = Time.time + firerate; // Set the next fire time
         }
     }
     public void Shoot()
