@@ -65,19 +65,21 @@ public class WaveManager : MonoBehaviour
         isSpawning = true;
         currentWaveIndex++;
 
+        // 1. RANDOMIZE THE LEVEL FIRST
+        // This ensures new lane coordinates are locked in BEFORE spawners try to place objects
+        if (levelGenerator != null && currentWaveIndex > 1)
+        {
+            levelGenerator.RandomizeLevel();
+        }
+
+        // 2. NOW announce the wave has started
         OnWaveStarted?.Invoke(currentWaveIndex);
         Debug.Log($"Starting Wave {currentWaveIndex}!");
         
         if (waveText != null)
             waveText.text = $"Wave {currentWaveIndex}";
 
-        // RANDOMIZE THE LEVEL HERE before the waiting period
-        // (We don't do it on wave 1 so the player gets the default level shape first)
-        if (levelGenerator != null && currentWaveIndex > 1)
-        {
-            levelGenerator.RandomizeLevel();
-        }
-
+        // 3. Wait for the standard wave delay
         yield return new WaitForSeconds(timeBetweenWaves);
 
         int enemyCountThisWave = baseEnemyCount + (additionalEnemiesPerWave * (currentWaveIndex - 1));

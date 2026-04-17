@@ -29,7 +29,23 @@ public class Health : MonoBehaviour
             healthBar.value = currentHealth;
         }
     }
+    public void Heal(int amount)
+    {
+        // Don't heal if we're dead or already at max health
+        if (currentHealth <= 0 || currentHealth >= maxHealth) return;
 
+        currentHealth += amount;
+
+        // Clamp it so it doesn't go over max
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        // Update UI and Events
+        if (healthBar != null) { healthBar.value = currentHealth; }
+        OnHealthChanged?.Invoke(currentHealth);
+    }
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
