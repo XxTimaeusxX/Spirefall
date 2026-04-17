@@ -6807,7 +6807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   musicSource: {fileID: 0}
   sfxSource: {fileID: 0}
-  mainBGM: {fileID: 8300000, guid: cf52707686f4dc34d8bb52c252fdfebb, type: 3}
+  mainBGM: {fileID: 0}
   playerShootSFX: {fileID: 8300000, guid: 76e10576a473f884abc7964a334f538f, type: 3}
   enemyDieSFX: {fileID: 8300000, guid: a6c74e1cf9d10604aba1ee56d54d8dc4, type: 3}
 --- !u!1 &1641735431
